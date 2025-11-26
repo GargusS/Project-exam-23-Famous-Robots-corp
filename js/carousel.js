@@ -2,7 +2,8 @@ if (document.getElementById("carousel")) {
   async function fetchData() {
     try {
       const apiUrl = "https://picsum.photos/v2/list";
-      const resp = await fetch(apiUrl);     
+      const resp = await fetch(apiUrl);
+      
 
 
       if (!resp.ok) {
@@ -30,30 +31,30 @@ if (document.getElementById("carousel")) {
       }
         
       function createPostContainer(post, className) {
-        const { author, id } = post;
+        const { title, jetpack_featured_media_url, excerpt } = post;
         const postContainer = document.createElement("div");
         postContainer.className = className;
 
         const h2 = document.createElement("h2");
-        h2.innerHTML = author.rendered;
-        //const img = document.createElement("img");
-        //img.setAttribute("src", download_url);
+        h2.innerHTML = title.rendered;
+        const img = document.createElement("img");
+        img.setAttribute("src", url);
   
 
         // Fetch alt text for the image
-        //fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
-          //.then((altText) => img.setAttribute("alt", altText))
-          //.catch((error) => console.error("Error setting alt text:", error));
+        fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
+          .then((altText) => img.setAttribute("alt", altText))
+          .catch((error) => console.error("Error setting alt text:", error));
 
-        const postId = document.createElement("div");
-        postId.innerHTML = id.rendered;
+        const postExcerpt = document.createElement("div");
+        postExcerpt.innerHTML = excerpt.rendered;
 
         // Add onclick event to open details.html
         postContainer.onclick = function () {
           window.location.href = `html/details.html?id=${post.id}`;
         };
 
-        postContainer.append(h2, img, postId);
+        postContainer.append(h2, img, postExcerpt);
         postsContainer.appendChild(postContainer);
       }
 
