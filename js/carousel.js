@@ -32,7 +32,7 @@ if (document.getElementById("carousel")) {
           return "Default Alt Text";
         }
       }
-
+        
       function createPostContainer(post, className) {
         const { title, jetpack_featured_media_url, excerpt } = post;
         const postContainer = document.createElement("div");
@@ -42,6 +42,7 @@ if (document.getElementById("carousel")) {
         h2.innerHTML = title.rendered;
         const img = document.createElement("img");
         img.setAttribute("src", url);
+  
 
         // Fetch alt text for the image
         fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
@@ -75,7 +76,7 @@ if (document.getElementById("carousel")) {
           imagesLoaded++;
 
           if (imagesLoaded === totalImages) {
-            loader.classList.add("hidden");
+            //loader.classList.add("hidden");
 
             const width = window.innerWidth;
 
