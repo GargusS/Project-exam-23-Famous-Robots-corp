@@ -76,7 +76,7 @@ if (document.getElementById("carousel")) {
           imagesLoaded++;
 
           if (imagesLoaded === totalImages) {
-            //loader.classList.add("hidden");
+            loader.classList.add("hidden");
 
             const width = window.innerWidth;
 
