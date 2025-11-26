@@ -36,8 +36,8 @@ if (document.getElementById("carousel")) {
 
         const h2 = document.createElement("h2");
         h2.innerHTML = author.rendered;
-        const img = document.createElement("img");
-        img.setAttribute("src", download_url);
+        //const img = document.createElement("img");
+        //img.setAttribute("src", download_url);
   
 
         // Fetch alt text for the image
