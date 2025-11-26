@@ -1,7 +1,7 @@
 if (document.getElementById("carousel")) {
   async function fetchData() {
     try {
-      const apiUrl = "https://picsum.photos/v2/list?page=2&limit=50";
+      const apiUrl = "https://picsum.photos/v2/list";
       const resp = await fetch(apiUrl);
 
       if (!resp.ok) {
