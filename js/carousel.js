@@ -41,9 +41,9 @@ if (document.getElementById("carousel")) {
   
 
         // Fetch alt text for the image
-        fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
-          .then((altText) => img.setAttribute("alt", altText))
-          .catch((error) => console.error("Error setting alt text:", error));
+        //fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
+          //.then((altText) => img.setAttribute("alt", altText))
+          //.catch((error) => console.error("Error setting alt text:", error));
 
         const postId = document.createElement("div");
         postId.innerHTML = id.rendered;
