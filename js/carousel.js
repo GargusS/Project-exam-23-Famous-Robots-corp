@@ -30,12 +30,12 @@ if (document.getElementById("carousel")) {
       }
         
       function createPostContainer(post, className) {
-        const { title, jetpack_featured_media_url, excerpt } = post;
+        const { author, id } = post;
         const postContainer = document.createElement("div");
         postContainer.className = className;
 
         const h2 = document.createElement("h2");
-        h2.innerHTML = title.rendered;
+        h2.innerHTML = author.rendered;
         const img = document.createElement("img");
         img.setAttribute("src", url);
   
@@ -45,15 +45,15 @@ if (document.getElementById("carousel")) {
           .then((altText) => img.setAttribute("alt", altText))
           .catch((error) => console.error("Error setting alt text:", error));
 
-        const postExcerpt = document.createElement("div");
-        postExcerpt.innerHTML = excerpt.rendered;
+        const postId = document.createElement("div");
+        postId.innerHTML = id.rendered;
 
         // Add onclick event to open details.html
         postContainer.onclick = function () {
           window.location.href = `html/details.html?id=${post.id}`;
         };
 
-        postContainer.append(h2, img, postExcerpt);
+        postContainer.append(h2, img, postId);
         postsContainer.appendChild(postContainer);
       }
 
