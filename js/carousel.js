@@ -4,6 +4,11 @@ if (document.getElementById("carousel")) {
       const apiUrl = "https://picsum.photos/v2/list";
       const resp = await fetch(apiUrl);
 
+      // Example object from api fetch
+      // "id":"0","author":"Alejandro Escamilla","width":5000,"height":3333,"url":"https://unsplash.com/photos/yC-Yzbqy7PY","download_url":"https://picsum.photos/id/0/5000/3333"
+      
+
+
       if (!resp.ok) {
         throw new Error("4-oh-4, Oops something went wrong here");
       }
@@ -36,7 +41,7 @@ if (document.getElementById("carousel")) {
         const h2 = document.createElement("h2");
         h2.innerHTML = title.rendered;
         const img = document.createElement("img");
-        img.setAttribute("src", jetpack_featured_media_url);
+        img.setAttribute("src", url);
 
         // Fetch alt text for the image
         fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
