@@ -1,7 +1,7 @@
 if (document.getElementById("carousel")) {
   async function fetchData() {
     try {
-      const apiUrl = "https://cms.sonnesyn.no/wp-json/wp/v2/posts?per_page=50";
+      const apiUrl = "https://picsum.photos/v2/list?page=2&limit=50";
       const resp = await fetch(apiUrl);
 
       if (!resp.ok) {
