@@ -2,11 +2,7 @@ if (document.getElementById("carousel")) {
   async function fetchData() {
     try {
       const apiUrl = "https://picsum.photos/v2/list";
-      const resp = await fetch(apiUrl);
-
-      // Example object from api fetch
-      // "id":"0","author":"Alejandro Escamilla","width":5000,"height":3333,"url":"https://unsplash.com/photos/yC-Yzbqy7PY","download_url":"https://picsum.photos/id/0/5000/3333"
-      
+      const resp = await fetch(apiUrl);     
 
 
       if (!resp.ok) {
