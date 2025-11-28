@@ -3,7 +3,7 @@ const cardContainer = document.getElementById("details");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-const url = "https://cms.sonnesyn.no/wp-json/wp/v2/posts/" + id;
+const url = `https://www.picsum.photos/{id}/info`;
 
 fetchDetails();
 
@@ -41,8 +41,8 @@ function createCard(info) {
 function createImage(info) {
   const img = document.createElement("img");
   img.setAttribute("id", "modal-trigger");
-  img.setAttribute("src", info.jetpack_featured_media_url);
-  img.setAttribute("alt", info.altText || "Picture of a robot from the article ");
+  img.setAttribute("src", info.download_url);
+  img.setAttribute("alt", `Bilde av fotograf ${info.author}`);
   img.className = "card-image";
 
   img.addEventListener("load", handleImageLoad);
@@ -52,13 +52,13 @@ function createImage(info) {
 
 function createTitle(info) {
   const title = document.createElement("h2");
-  title.innerHTML = info.title.rendered;
+  title.innerHTML = info.author;
   return title;
 }
 
 function createContent(info) {
   const content = document.createElement("p");
-  content.innerHTML = info.content.rendered;
+   content.innerHTML = `Bilde ID: ${info.id}. <a href="${info.url}" target="_blank">Se original lenke</a>`;
   return content;
 }
 

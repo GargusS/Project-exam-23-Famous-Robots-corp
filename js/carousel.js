@@ -13,11 +13,10 @@ if (document.getElementById("carousel")) {
       const dataArray = await resp.json();
       const postsContainer = document.getElementById("dataArray");
       const loader = document.querySelector(".loader");
-
+      
       async function fetchDataFromMediaURL(url, post) {
         try {
           const response = await fetch(url);
-
           if (!response.ok) {
             throw new Error(`Failed to fetch media data. Status: ${response.status}`);
           }
@@ -31,27 +30,30 @@ if (document.getElementById("carousel")) {
       }
         
       function createPostContainer(post, className) {
-        const { title, jetpack_featured_media_url, excerpt } = post;
+        const { id, author, download_url } = post;
+
         const postContainer = document.createElement("div");
         postContainer.className = className;
 
         const h2 = document.createElement("h2");
-        h2.innerHTML = title.rendered;
+        h2.innerHTML = author;
+
         const img = document.createElement("img");
-        img.setAttribute("src", url);
-  
+        img.setAttribute("src", download_url);
 
         // Fetch alt text for the image
-        fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
-          .then((altText) => img.setAttribute("alt", altText))
-          .catch((error) => console.error("Error setting alt text:", error));
+        //fetchDataFromMediaURL(post._links["wp:featuredmedia"][0].href, post)
+          //.then((altText) => img.setAttribute("alt", altText))
+          //.catch((error) => console.error("Error setting alt text:", error));
+
+        img.setAttribute("alt", `Bilde av ${author}`);
 
         const postExcerpt = document.createElement("div");
-        postExcerpt.innerHTML = excerpt.rendered;
+        postExcerpt.innerHTML = `Bilde ID: ${id}`;
 
         // Add onclick event to open details.html
         postContainer.onclick = function () {
-          window.location.href = `html/details.html?id=${post.id}`;
+          window.location.href = `html/details.html?id=${id}`;
         };
 
         postContainer.append(h2, img, postExcerpt);
