@@ -3,7 +3,7 @@ const cardContainer = document.getElementById("details");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-const url = `https://www.picsum.photos/{id}/info`;
+const url = `https://picsum.photos/id/${id}/info`;
 
 fetchDetails();
 
